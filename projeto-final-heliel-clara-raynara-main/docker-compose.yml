@@ -1,0 +1,14 @@
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql_clinica2
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dbclinica_vet
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./clinica.sql:/docker-entrypoint-initdb.d/01-clinica.sql
+      - mysql_data:/var/lib/mysql
+volumes:
+  mysql_data:
